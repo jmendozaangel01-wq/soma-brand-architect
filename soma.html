@@ -1196,7 +1196,7 @@ function showBrandKit(d) {
 
   // Store globally for download
   window._BRAND = d;
-
+  localStorage.setItem('soma_last_brand', JSON.stringify(d));
   // Show brand kit
   const bk = document.getElementById('brandkit');
   bk.style.display = 'block';
@@ -1217,6 +1217,15 @@ function downloadJSON(data, filename) {
   a.href = URL.createObjectURL(blob);
   a.download = filename;
   a.click();
+}
+  // ─── RESTAURA ÚLTIMO ANÁLISIS AL RECARGAR ─────────
+const savedBrand = localStorage.getItem('soma_last_brand');
+if (savedBrand) {
+  try {
+    showBrandKit(JSON.parse(savedBrand));
+  } catch(e) {
+    localStorage.removeItem('soma_last_brand');
+  }
 }
 </script>
 </body>
