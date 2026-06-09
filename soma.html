@@ -113,7 +113,10 @@ nav {
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 #intake.hiding {
-  opacity: 0; transform: translateY(-20px); pointer-events: none;
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+  display: none;
 }
 
 .intake-hero {
@@ -937,6 +940,7 @@ function resetToIntake() {
   document.getElementById('brandkit').className = '';
   document.getElementById('brandkit').style.display = 'none';
   document.getElementById('intake').classList.remove('hiding');
+  document.getElementById('intake').style.display = 'flex';
   document.getElementById('submitBtn').disabled = false;
   document.getElementById('navBrandTag').style.display = 'none';
   document.getElementById('btnReset').style.display = 'none';
@@ -973,6 +977,7 @@ function hexToRgba(hex, a) {
 // ─── RENDER BRAND KIT ─────────────────────
 function showBrandKit(d) {
   if (!d || !d.identity) return;
+  document.getElementById('intake').style.display = 'none'; // 
 
   // Apply brand colors
   if (d.design?.palette?.primary?.length) {
