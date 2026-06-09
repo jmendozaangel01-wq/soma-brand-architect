@@ -423,13 +423,29 @@ input:focus, textarea:focus {
 .bk-hero-sub { font-size: 17px; color: var(--brand-text-dim); max-width: 560px; line-height: 1.6; margin-bottom: 48px; }
 
 .bk-hero-stats {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  border: 1px solid rgba(255,255,255,0.1);
-  max-width: 800px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid rgba(255,255,255,0.2);
+  max-width: 100%;
+  margin-top: 40px;
 }
 .bk-hero-stat {
-  padding: 22px 26px;
-  border-right: 1px solid rgba(255,255,255,0.1);
+  padding: 18px 22px;
+  border-right: 1px solid rgba(255,255,255,0.2);
+}
+.bk-hero-stat:last-child { border-right: none; }
+.bk-stat-lbl {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 6px;
+}
+.bk-stat-val {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
 }
 .bk-hero-stat:last-child { border-right: none; }
 .bk-stat-lbl { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brand-text-dim); margin-bottom: 8px; }
@@ -1021,7 +1037,7 @@ function showBrandKit(d) {
   document.getElementById('bk-h1').innerHTML = `<em>${d.identity.name}</em><br>${d.identity.tagline || ''}`;
   document.getElementById('bk-sub').textContent = d.identity.hero_sub || d.identity.concept || '';
   document.getElementById('stat-sector').textContent = d.identity.sector || '—';
-  document.getElementById('stat-audience').textContent = d.identity.audience || '—';
+  document.getElementById('stat-audience').textContent = (d.identity.audience || '—').slice(0, 60);
   document.getElementById('stat-market').textContent = d.identity.market || '—';
   document.getElementById('stat-language').textContent = d.identity.language || '—';
 
